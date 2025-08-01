@@ -15,15 +15,14 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: 
-                linear-gradient(135deg, rgba(43, 103, 119, 0.8) 0%, rgba(200, 216, 228, 0.8) 100%),
-                url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            /* Animated background with subtle gradient */
+            background: linear-gradient(45deg, #2b6777, #c8d8e4);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            color: #333; /* Default text color */
         }
 
         body::before {
@@ -61,10 +60,10 @@
             margin: 40px auto;
             max-width: 600px;
             animation: fadeInUp 1.5s ease-out;
-            box-shadow: 
+            box-shadow:
                 0 20px 60px rgba(0, 0, 0, 0.1),
                 0 8px 25px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px dashed rgba(43, 103, 119, 0.3); /* Decorative border */
             transition: all 0.5s ease;
         }
 
@@ -90,10 +89,11 @@
         .message-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            font-weight: 900;
+            font-weight: 700; /* Reduced font weight */
             color: #2b6777;
             margin-bottom: 20px;
             animation: slideInDown 1s ease-out 0.5s both;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Added subtle text shadow */
         }
 
         .message-text {
@@ -153,10 +153,10 @@
             margin: 40px auto;
             max-width: 900px;
             animation: fadeInUp 1.5s ease-out;
-            box-shadow: 
+            box-shadow:
                 0 20px 60px rgba(0, 0, 0, 0.1),
                 0 8px 25px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px dotted rgba(43, 103, 119, 0.3); /* Decorative border */
             display: none;
             opacity: 0;
             transform: translateY(50px);
@@ -210,15 +210,15 @@
         .heart:nth-child(9) { left: 90%; animation-delay: 3.5s; color: #00d2d3; }
 
         .anniversary-badge {
-            background: linear-gradient(135deg, #2b6777, #c8d8e4);
-            color: white;
+            background: linear-gradient(135deg, #a8dadc, #457b9d); /* Updated gradient */
+            color: #fff; /* Updated text color */
             padding: 15px 30px;
             border-radius: 50px;
             font-size: 18px;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 30px;
             display: inline-block;
-            animation: pulse 3s ease-in-out infinite;
+            animation: pulse 3s ease-in-out infinite, tilt 5s linear infinite; /* Added tilt animation */
             box-shadow: 0 8px 25px rgba(43, 103, 119, 0.3);
             position: relative;
             overflow: hidden;
@@ -238,7 +238,7 @@
         .main-title {
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
-            font-weight: 900;
+            font-weight: 700;
             color: #2b6777;
             margin-bottom: 20px;
             animation: slideInDown 1s ease-out 0.5s both;
@@ -274,7 +274,7 @@
         }
 
         .date-time {
-            background: linear-gradient(135deg, #2b6777, #c8d8e4);
+            background: linear-gradient(135deg, #8ac4ff, #a8dadc); /* Updated gradient */
             color: #1a4a5a;
             padding: 35px;
             border-radius: 20px;
@@ -316,7 +316,7 @@
         }
 
         .location {
-            background: linear-gradient(135deg, #2b6777, #c8d8e4);
+            background: linear-gradient(135deg, #8ac4ff, #a8dadc); /* Updated gradient */
             color: #1a4a5a;
             padding: 35px;
             border-radius: 20px;
@@ -385,7 +385,7 @@
             font-size: 4rem;
             color: #bdc3c7;
             margin: 25px 0;
-            animation: rotate 6s linear infinite;
+            animation: rotate 6s linear infinite, pulse 4s ease-in-out infinite; /* Added pulse animation */
             filter: drop-shadow(0 4px 8px rgba(189, 195, 199, 0.3));
         }
 
@@ -408,6 +408,18 @@
         }
 
         /* Enhanced Animations */
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -510,10 +522,10 @@
         @keyframes float {
             0%, 100% {
                 transform: translateY(0px) rotate(0deg) scale(1);
-                opacity: 0.6;
+                opacity: 0.7; /* Adjusted opacity */
             }
             50% {
-                transform: translateY(-20px) rotate(180deg) scale(1.1);
+                transform: translateY(-15px) rotate(360deg) scale(1.1); /* Adjusted translateY and rotation */
                 opacity: 1;
             }
         }
@@ -524,8 +536,34 @@
         }
 
         @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes tilt {
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        @keyframes shimmerText {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
         }
 
         /* Enhanced Sparkle effect */
@@ -629,15 +667,15 @@
                 <i class="fas fa-envelope-open-text"></i>
             </div>
             
-            <h1 class="message-title">A Special Invitation</h1>
+            <h1 class="message-title">ప్రత్యేక ఆహ్వానం</h1>
             
             <p class="message-text">
-                You have been invited to a very special celebration.<br>
-                Click the button below to reveal a beautiful invitation.
+                మిమ్మల్ని ఒక ప్రత్యేక వేడుకకు ఆహ్వానించడమైనది.<br>
+                క్రింద ఉన్న బటన్ పై క్లిక్ చేసి ఆహ్వానాన్ని చూడండి.
             </p>
             
             <button class="reveal-button" onclick="revealInvitation()">
-                <i class="fas fa-heart"></i> Open Invitation
+                <i class="fas fa-heart"></i> ఆహ్వానాన్ని తెరవండి
             </button>
         </div>
 
@@ -656,56 +694,56 @@
             </div>
 
             <div class="anniversary-badge">
-                <i class="fas fa-gem"></i> 25th Wedding Anniversary
+                <i class="fas fa-gem"></i> విజయవంతమైన అనుబంధానికి 25 సంవత్సరాల ఘనత
             </div>
 
-            <h1 class="main-title">Silver Jubilee Celebration</h1>
-            <p class="subtitle">A Quarter Century of Love & Togetherness</p>
+            <h1 class="main-title">25వ వివాహ వార్షికోత్సవం</h1>
+            <p class="subtitle">ప్రేమ & ఐక్యతతో ఒక పావు శతాబ్దం</p>
 
             <div class="silver-anniversary-icon">
                 <i class="fas fa-ring"></i>
             </div>
 
             <div class="couple-names">
-                Jyothi & Madhusudhana Rao
+                జ్యోతి & మధుసూదన రావు
             </div>
 
             <p class="celebration-text">
-                With hearts full of joy and gratitude, we invite you to share in the celebration<br>
-                of twenty-five years of love, commitment, and beautiful memories.<br><br>
-                From the moment they said "I do" to this silver milestone,<br>
-                their love story has been a testament to faith, patience, and unwavering devotion.<br><br>
-                Let us gather to honor this remarkable journey of togetherness<br>
-                and create new memories that will last a lifetime.
+                సంతోషం మరియు కృతజ్ఞతతో నిండిన హృదయాలతో, ప్రేమ, నిబద్ధత మరియు అందమైన జ్ఞాపకాలతో<br>
+                నిండిన ఇరవై ఐదు సంవత్సరాల వేడుకలో పాలుపంచుకోవాలని మిమ్మల్ని ఆహ్వానిస్తున్నాము.<br><br>
+                వారు "నేను అంగీకరిస్తున్నాను" అని చెప్పిన క్షణం నుండి ఈ వెండి మైలురాయి వరకు,<br>
+                వారి ప్రేమ కథ విశ్వాసం, ఓర్పు మరియు అచంచలమైన భక్తికి నిదర్శనం.<br><br>
+                కలిసి ఉండటం యొక్క ఈ అద్భుతమైన ప్రయాణాన్ని గౌరవించడానికి మనమందరం కలిసి కొత్త జ్ఞాపకాలను సృష్టిద్దాం<br>
+                మరియు జీవితాంతం నిలిచిపోయేలా చేద్దాం.
             </p>
 
             <div class="date-time">
-                <h3><i class="fas fa-calendar-alt"></i> Date & Time</h3>
-                <p><strong>Saturday, 16 August</strong></p>
-                <p><strong>10:00 AM Onwards</strong></p>
-                <p><i class="fas fa-clock"></i> Welcome: 10:00 AM</p>
-                <p><i class="fas fa-utensils"></i> Lunch: 12:30 PM</p>
+                <h3><i class="fas fa-calendar-alt"></i> తేదీ & సమయం</h3>
+                <p><strong>శనివారం, 16 ఆగస్టు</strong></p>
+                <p><strong>ఉదయం 10:00 గంటల నుండి</strong></p>
+                <p><i class="fas fa-clock"></i> స్వాగతం: ఉదయం 10:00 గంటలకు</p>
+                <p><i class="fas fa-utensils"></i> భోజనం: మధ్యాహ్నం 12:30 గంటలకు</p>
             </div>
 
             <div class="location">
-                <h3><i class="fas fa-map-marker-alt"></i> Venue</h3>
-                <p><strong>Celebrations Hotel</strong></p>
-                <p>Akkayapalam, Main Road</p>
+                <h3><i class="fas fa-map-marker-alt"></i> వేదిక</h3>
+                <p><strong>సెలెబ్రేషన్స్ హోటల్</strong></p>
+                <p>అక్కయ్యపాలెం, మెయిన్ రోడ్</p>
                 <p><i class="fas fa-phone"></i> 9000344615</p>
             </div>
 
             <div class="contact-info">
-                <h4><i class="fas fa-phone"></i> Contact Information</h4>
-                <p><strong>For RSVP & Inquiries:</strong></p>
+                <h4><i class="fas fa-phone"></i> సంప్రదింపు సమాచారం</h4>
+                <p><strong>RSVP & విచారణ కోసం:</strong></p>
                 <p><i class="fas fa-mobile-alt"></i> 9000344615</p>
-                <p><i class="fas fa-envelope"></i> For RSVP & Inquiries</p>
-                <p><i class="fas fa-calendar-check"></i> Please RSVP by 10 August</p>
+                <p><i class="fas fa-envelope"></i> RSVP & విచారణ కోసం</p>
+                <p><i class="fas fa-calendar-check"></i> దయచేసి ఆగస్టు 10 లోపు RSVP చేయండి</p>
             </div>
 
             <div class="quote-section">
                 <p class="quote-text">
-                    "Love is not about how many days, months, or years you have been together.<br>
-                    Love is about how much you love each other every single day."
+                    "ప్రేమ అనేది మీరు కలిసి ఎన్ని రోజులు, నెలలు లేదా సంవత్సరాలు ఉన్నారనే దాని గురించి కాదు.<br>
+                    ప్రేమ అనేది మీరు ప్రతిరోజూ ఒకరినొకరు ఎంతగా ప్రేమిస్తున్నారనే దాని గురించి."
                 </p>
             </div>
         </div>
@@ -752,14 +790,20 @@
             sparkleInterval = setInterval(createSparkle, 500);
         }
 
-        // Enhanced scroll reveal effect
+        // Enhanced scroll reveal effect and parallax effect
         window.addEventListener('scroll', () => {
             const card = document.querySelector('.invitation-card');
             if (card.classList.contains('show')) {
                 const scrolled = window.pageYOffset;
-                const rate = scrolled * -0.2;
+                const rate = scrolled * -0.1; /* Reduced parallax intensity */
                 card.style.transform = `translateY(${rate}px)`;
             }
+        });
+
+        // Parallax effect to background
+        window.addEventListener('scroll', function() {
+            let scrolled = window.pageYOffset;
+            document.body.style.backgroundPositionY = scrolled * 0.1 + 'px'; /* Subtle parallax */
         });
 
         // Enhanced parallax effect to hearts
