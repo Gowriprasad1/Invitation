@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25th Wedding Anniversary Celebration</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: 
+                linear-gradient(135deg, rgba(43, 103, 119, 0.8) 0%, rgba(200, 216, 228, 0.8) 100%),
+                url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Message Card Styles */
+        .message-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 40px auto;
+            max-width: 600px;
+            animation: fadeInUp 1.5s ease-out;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.1),
+                0 8px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        .message-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #2b6777, #c8d8e4, #2b6777);
+            background-size: 200% 100%;
+            animation: rainbow 4s linear infinite;
+        }
+
+        .message-icon {
+            font-size: 4rem;
+            color: #2b6777;
+            margin-bottom: 30px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .message-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #2b6777;
+            margin-bottom: 20px;
+            animation: slideInDown 1s ease-out 0.5s both;
+        }
+
+        .message-text {
+            font-size: 1.2rem;
+            color: #34495e;
+            margin: 30px 0;
+            line-height: 1.8;
+            animation: fadeIn 1s ease-out 1s both;
+            font-weight: 400;
+        }
+
+        .reveal-button {
+            background: linear-gradient(135deg, #2b6777, #c8d8e4);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(43, 103, 119, 0.3);
+            animation: bounce 2.5s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reveal-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .reveal-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(43, 103, 119, 0.4);
+        }
+
+        .reveal-button:hover::before {
+            left: 100%;
+        }
+
+        /* Invitation Card Styles */
+        .invitation-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 40px auto;
+            max-width: 900px;
+            animation: fadeInUp 1.5s ease-out;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.1),
+                0 8px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: none;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .invitation-card.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .invitation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff);
+            background-size: 200% 100%;
+            animation: rainbow 4s linear infinite;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: float 8s ease-in-out infinite;
+            opacity: 0.6;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; color: #ff6b6b; }
+        .heart:nth-child(2) { left: 20%; animation-delay: 1s; color: #4ecdc4; }
+        .heart:nth-child(3) { left: 30%; animation-delay: 2s; color: #45b7d1; }
+        .heart:nth-child(4) { left: 40%; animation-delay: 3s; color: #96ceb4; }
+        .heart:nth-child(5) { left: 50%; animation-delay: 4s; color: #feca57; }
+        .heart:nth-child(6) { left: 60%; animation-delay: 5s; color: #ff9ff3; }
+        .heart:nth-child(7) { left: 70%; animation-delay: 1.5s; color: #54a0ff; }
+        .heart:nth-child(8) { left: 80%; animation-delay: 2.5s; color: #5f27cd; }
+        .heart:nth-child(9) { left: 90%; animation-delay: 3.5s; color: #00d2d3; }
+
+        .anniversary-badge {
+            background: linear-gradient(135deg, #2b6777, #c8d8e4);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: inline-block;
+            animation: pulse 3s ease-in-out infinite;
+            box-shadow: 0 8px 25px rgba(43, 103, 119, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .anniversary-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 3s infinite;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #2b6777;
+            margin-bottom: 20px;
+            animation: slideInDown 1s ease-out 0.5s both;
+            text-shadow: 2px 2px 4px rgba(43, 103, 119, 0.1);
+        }
+
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            animation: slideInUp 1s ease-out 0.8s both;
+        }
+
+        .couple-names {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #e74c3c, #c0392b, #e67e22);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 30px 0;
+            animation: fadeIn 1s ease-out 1.2s both;
+        }
+
+        .celebration-text {
+            font-size: 1.3rem;
+            color: #34495e;
+            margin: 30px 0;
+            line-height: 1.8;
+            animation: fadeIn 1s ease-out 1.5s both;
+            font-weight: 400;
+        }
+
+        .date-time {
+            background: linear-gradient(135deg, #2b6777, #c8d8e4);
+            color: #1a4a5a;
+            padding: 35px;
+            border-radius: 20px;
+            margin: 40px 0;
+            animation: slideInLeft 1s ease-out 1.8s both;
+            box-shadow: 0 15px 35px rgba(43, 103, 119, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .date-time::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        .date-time h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            color: #1a4a5a;
+        }
+
+        .date-time p {
+            font-size: 1.2rem;
+            margin: 12px 0;
+            opacity: 1;
+            position: relative;
+            z-index: 1;
+            color: #1a4a5a;
+            font-weight: 600;
+        }
+
+        .location {
+            background: linear-gradient(135deg, #2b6777, #c8d8e4);
+            color: #1a4a5a;
+            padding: 35px;
+            border-radius: 20px;
+            margin: 30px 0;
+            animation: slideInRight 1s ease-out 2.1s both;
+            box-shadow: 0 15px 35px rgba(43, 103, 119, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite 1s;
+        }
+
+        .location h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            color: #1a4a5a;
+        }
+
+        .location p {
+            font-size: 1.2rem;
+            margin: 12px 0;
+            opacity: 1;
+            position: relative;
+            z-index: 1;
+            color: #1a4a5a;
+            font-weight: 600;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            animation: fadeIn 1s ease-out 2.7s both;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-info h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .contact-info p {
+            color: #7f8c8d;
+            margin: 10px 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .silver-anniversary-icon {
+            font-size: 4rem;
+            color: #bdc3c7;
+            margin: 25px 0;
+            animation: rotate 6s linear infinite;
+            filter: drop-shadow(0 4px 8px rgba(189, 195, 199, 0.3));
+        }
+
+        .quote-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: fadeIn 1s ease-out 3s both;
+        }
+
+        .quote-text {
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        /* Enhanced Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg) scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg) scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Enhanced Sparkle effect */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: linear-gradient(45deg, #fff, #feca57);
+            border-radius: 50%;
+            animation: sparkle 3s linear infinite;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+
+        @keyframes sparkle {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1) rotate(180deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0) rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .message-card, .invitation-card {
+                padding: 40px 25px;
+                margin: 20px auto;
+                border-radius: 25px;
+            }
+
+            .message-title {
+                font-size: 2rem;
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.6rem;
+            }
+
+            .couple-names {
+                font-size: 2rem;
+            }
+
+            .date-time, .location {
+                padding: 25px 20px;
+                border-radius: 15px;
+            }
+
+            .date-time h3, .location h3 {
+                font-size: 1.5rem;
+            }
+
+            .reveal-button {
+                padding: 18px 35px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .message-title {
+                font-size: 1.8rem;
+            }
+
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .couple-names {
+                font-size: 1.6rem;
+            }
+
+            .celebration-text {
+                font-size: 1.1rem;
+            }
+
+            .anniversary-badge {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Message Card -->
+        <div class="message-card" id="messageCard">
+            <div class="message-icon">
+                <i class="fas fa-envelope-open-text"></i>
+            </div>
+            
+            <h1 class="message-title">A Special Invitation</h1>
+            
+            <p class="message-text">
+                You have been invited to a very special celebration.<br>
+                Click the button below to reveal a beautiful invitation.
+            </p>
+            
+            <button class="reveal-button" onclick="revealInvitation()">
+                <i class="fas fa-heart"></i> Open Invitation
+            </button>
+        </div>
+
+        <!-- Invitation Card -->
+        <div class="invitation-card" id="invitationCard">
+            <div class="floating-hearts">
+                <i class="fas fa-heart heart"></i>
+                <i class="fas fa-heart heart"></i>
+                <i class="fas fa-heart heart"></i>
+                <i class="fas fa-heart heart"></i>
+                <i class="fas fa-heart heart"></i>
+                <i class="fas fa-heart heart"></i>
+                <i class="fas fa-heart heart"></i>
+                <i class="fas fa-heart heart"></i>
+                <i class="fas fa-heart heart"></i>
+            </div>
+
+            <div class="anniversary-badge">
+                <i class="fas fa-gem"></i> 25th Wedding Anniversary
+            </div>
+
+            <h1 class="main-title">Silver Jubilee Celebration</h1>
+            <p class="subtitle">A Quarter Century of Love & Togetherness</p>
+
+            <div class="silver-anniversary-icon">
+                <i class="fas fa-ring"></i>
+            </div>
+
+            <div class="couple-names">
+                Jyothi & Madhusudhana Rao
+            </div>
+
+            <p class="celebration-text">
+                With hearts full of joy and gratitude, we invite you to share in the celebration<br>
+                of twenty-five years of love, commitment, and beautiful memories.<br><br>
+                From the moment they said "I do" to this silver milestone,<br>
+                their love story has been a testament to faith, patience, and unwavering devotion.<br><br>
+                Let us gather to honor this remarkable journey of togetherness<br>
+                and create new memories that will last a lifetime.
+            </p>
+
+            <div class="date-time">
+                <h3><i class="fas fa-calendar-alt"></i> Date & Time</h3>
+                <p><strong>Saturday, 16 August</strong></p>
+                <p><strong>10:00 AM Onwards</strong></p>
+                <p><i class="fas fa-clock"></i> Welcome: 10:00 AM</p>
+                <p><i class="fas fa-utensils"></i> Lunch: 12:30 PM</p>
+            </div>
+
+            <div class="location">
+                <h3><i class="fas fa-map-marker-alt"></i> Venue</h3>
+                <p><strong>Celebrations Hotel</strong></p>
+                <p>Akkayapalam, Main Road</p>
+                <p><i class="fas fa-phone"></i> 9000344615</p>
+            </div>
+
+            <div class="contact-info">
+                <h4><i class="fas fa-phone"></i> Contact Information</h4>
+                <p><strong>For RSVP & Inquiries:</strong></p>
+                <p><i class="fas fa-mobile-alt"></i> 9000344615</p>
+                <p><i class="fas fa-envelope"></i> For RSVP & Inquiries</p>
+                <p><i class="fas fa-calendar-check"></i> Please RSVP by 10 August</p>
+            </div>
+
+            <div class="quote-section">
+                <p class="quote-text">
+                    "Love is not about how many days, months, or years you have been together.<br>
+                    Love is about how much you love each other every single day."
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function revealInvitation() {
+            const messageCard = document.getElementById('messageCard');
+            const invitationCard = document.getElementById('invitationCard');
+            
+            // Hide message card with animation
+            messageCard.style.transform = 'translateY(-50px)';
+            messageCard.style.opacity = '0';
+            
+            setTimeout(() => {
+                messageCard.style.display = 'none';
+                
+                // Show invitation card with animation
+                invitationCard.classList.add('show');
+                
+                // Scroll to invitation card
+                invitationCard.scrollIntoView({ behavior: 'smooth' });
+            }, 500);
+        }
+
+        // Enhanced sparkle effects
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.animationDelay = Math.random() * 3 + 's';
+            sparkle.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.querySelector('.invitation-card').appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 3000);
+        }
+
+        // Create sparkles periodically (only when invitation is shown)
+        let sparkleInterval;
+        function startSparkles() {
+            sparkleInterval = setInterval(createSparkle, 500);
+        }
+
+        // Enhanced scroll reveal effect
+        window.addEventListener('scroll', () => {
+            const card = document.querySelector('.invitation-card');
+            if (card.classList.contains('show')) {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.2;
+                card.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Enhanced parallax effect to hearts
+        window.addEventListener('mousemove', (e) => {
+            const hearts = document.querySelectorAll('.heart');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            hearts.forEach((heart, index) => {
+                const speed = (index + 1) * 0.5;
+                const rotation = (index + 1) * 5;
+                heart.style.transform = `translate(${x * speed}px, ${y * speed}px) rotate(${rotation}deg)`;
+            });
+        });
+
+        // Add subtle hover effects to sections
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.date-time, .location, .contact-info, .quote-section').forEach(section => {
+                section.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                    this.style.transition = 'all 0.3s ease';
+                });
+                
+                section.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+
+        // Start sparkles when invitation is revealed
+        function startSparklesWhenRevealed() {
+            setTimeout(() => {
+                startSparkles();
+            }, 1000);
+        }
+    </script>
+</body>
+</html> 
