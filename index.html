@@ -385,8 +385,26 @@
             font-size: 4rem;
             color: #bdc3c7;
             margin: 25px 0;
-            animation: rotate 6s linear infinite, pulse 4s ease-in-out infinite; /* Added pulse animation */
+            animation: rotateAndPulse 4s ease-in-out infinite;
             filter: drop-shadow(0 4px 8px rgba(189, 195, 199, 0.3));
+        }
+
+        @keyframes rotateAndPulse {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            25% {
+                transform: rotate(90deg) scale(1.05);
+            }
+            50% {
+                transform: rotate(180deg) scale(1);
+            }
+            75% {
+                transform: rotate(270deg) scale(1.05);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
         }
 
         .quote-section {
